@@ -1,11 +1,23 @@
 <template>
   <b-container fluid class="bg-light">
     <b-row id="greeting">
-      <div id="portrait" ref="portrait" class="col-6 img-fluid"></div>
+      <div class="col-6" id="portrait">
+        <div id="portraitinner">
+          <img id ="portraitimg" ref="portrait" src="@/assets/me_sqr.jpg" class="img-fluid">
+        </div>
+        <!--<div class="overlay">Portrait by Alexa Hawksworth.</div>-->
+      </div>
       <div id="jumbo" ref="jumbo" class="col-6 jumbotron bg-info text-light" align="right">
-        <div class="container primary ">
+        <div class="container primary">
           <div id="tplysource" ref="tplysource">
-            <type>Hello World.</type>
+            <type data-type="type1">Hello workl,.</type>
+            <wait>500ms</wait>
+            <delete data-chars="7" data-ignore-whitespace="false"></delete>
+            <wait>500ms</wait>
+            <type data-type="type2">World.</type>
+
+            <!--<delete data-chars="12" data-ignore-whitespace="false"></delete>
+            <type>Kyle's site.</type>-->
           </div>
           <h1 id="tplydestination" ref="tplydestination" class="display-4 text-primary"></h1>
           <p class="lead"></p>
@@ -52,6 +64,7 @@
 </script>
 
 <script>
+
 require('@/assets/scripts/tply.js')
 // @ is an alias to /src
 
@@ -72,24 +85,22 @@ export default {
           this.$refs.tplysource,
           this.$refs.tplydestination,
           {
-            types: {
-                name: "robot-type",
-                properties: {
-                    "data-char-interval": "0ms",
-                    "data-comma-interval": "0ms",
-                    "data-period-interval": "0ms",
-                    "data-word-interval": "100ms"
-                },
-            },
-            processing: {
-                tag: "div",
-                pre: function(element) {
-                    element.innerText += " haha"
-                },
-                post: function(element) {
-                    element.parentElement.style.backgroundColor = "red";
+            "types": [
+              {
+                "name": "type1",
+                "properties": {
+                    "data-char-interval": "50ms",
+                    "data-word-interval": "700ms"
                 }
-            }
+              },
+              {
+                "name": "type2",
+                "properties": {
+                    "data-char-interval": "200ms",
+                    "data-word-interval": "700ms"
+                }
+              }
+            ]
         });
         var prevScrollpos = window.pageYOffset;
         var jumbo = this.$refs.jumbo;
@@ -97,7 +108,20 @@ export default {
         window.addEventListener("scroll", function(){
           //var jumboClasses = jumbo.classList;
           var currentScrollPos = window.pageYOffset;
-          if (prevScrollpos > currentScrollPos) {
+
+          if (prevScrollpos == 0) {
+            jumbo.style.top = "-100em";
+            portrait.style.left = "-100em";
+            jumbo.classList.remove("quick")
+          }
+
+          if (currentScrollPos == 0) {
+            jumbo.classList.add("quick")
+            jumbo.style.top = "0";
+            portrait.style.left = "3.5em";
+          }
+
+          /* if (prevScrollpos > currentScrollPos) {
             jumbo.style.top = "0px";
             portrait.style.top = "0px";
             jumbo.classList.toggle("quick")
@@ -107,7 +131,7 @@ export default {
             portrait.style.top = "-100em";
             jumbo.classList.toggle("quick")
 
-          }
+          } */
           prevScrollpos = currentScrollPos;
           
         })
@@ -119,15 +143,19 @@ export default {
 
 
 <style lang="scss">
+@import '../../scss/custom.scss';
 
 .quick {
-  background-color:red !important;
-  transition: top 0.3s; /* Transition effect when sliding down (and up) */
+  //background-color:blue !important;
+  transition: top 0.3s !important; /* Transition effect when sliding down (and up) */
 }
 
 
 
 #greeting {
+
+  display:flex;
+  padding-top:2em;
 
   #tplysource{
     display:none
@@ -165,23 +193,65 @@ export default {
     border-radius:0.3em;
     margin-left: 0.2em;
   }
-  
 
-  padding-top:2em;
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+  }
+
   #portrait {
-    top: 0; /* Stay on top */
-    width: 100%; /* Full width */
-    transition: top 0.3s; /* Transition effect when sliding down (and up) */
-    background:#FCFCFC;
-    background-image:url(../assets/me_sqr.jpg);
-    background-blend-mode:darken;
-    background-size:contain;
+    /* float:right;
+    position:relative;
+    display:flex; */
+    /* background-image:url(../assets/me_sqr.jpg);
+    background-size:cover;
+    opacity:0 */
+    background: theme-color("primary");
+    padding:0 !important;
+  }
+
+  #portraitinner {
+    width:60%;
+    float:right;
+    height:100%;
+    display:flex;
+  }
+
+  #portraitinner > img {
+    width:100%;
+    position:relative;
+    left:3.5em;
+    object-fit:cover;
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+    border-top-left-radius:3em;
+    border-bottom-left-radius:3em;
+  }
+
+  #portraitimg:hover .overlay{
+    opacity:1
   }
 
   #jumbo {
+    padding:3em !important;
+    display:flex;
+    border-top-left-radius:3em;
+    border-top-right-radius:0;
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+
     top: 0; /* Stay on top */
-    width: 100%; /* Full width */
-    transition: top 3s; /* Transition effect when sliding down (and up) */
+    max-height:100%;
+    margin-bottom:0px !important;
+    transition: top 1s;
     h1 {
       font-family:'Playfair Display';
     }
