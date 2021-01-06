@@ -1,20 +1,25 @@
 <template>
   <b-container fluid class="bg-light">
-    <b-row id="greeting">
-      <div class="col-6">
+    <b-row id="greeting" class="d-flex">
+      <div class="col-2"></div>
+      <div class="col-3">
         <div id="portrait-container">
-          <img id ="portraitimg" ref="portrait" src="@/assets/me_sqr.jpg" class="img-fluid">
+          <!--<img id ="codeimg" ref="code" src="@/assets/code.jpg" class="img-fluid">-->
+          <img id ="portraitimg" ref="portrait" src="@/assets/me_sqrx1000.jpg" class="img-fluid">
         </div>
         <!--<div class="overlay">Portrait by Alexa Hawksworth.</div>-->
       </div>
-      <div id="jumbo" ref="jumbo" class="col-6 jumbotron bg-primary text-light" align="right">
+      <div id="jumbo" ref="jumbo" class="col-5 jumbotron bg-primary text-light" align="right">
         <div class="container">
           <div id="tplysource" ref="tplysource">
             <type data-type="type1">Hello workl,.</type>
             <wait>500ms</wait>
             <delete data-chars="7" data-ignore-whitespace="false"></delete>
             <wait>500ms</wait>
-            <type data-type="type2">World...!</type>
+            <type data-type="type1">wrok.</type>
+            <delete data-chars="10" data-ignore-whitespace="false"></delete>
+            <wait>50ms</wait>
+            <type data-type="type1">Hello world.</type>
           </div>
           <h1 id="tplydestination" ref="tplydestination" class="display-4 text-light"></h1>
           <p class="lead text-light">My name is Kyle Grimsrud-Manz.</p>
@@ -22,6 +27,7 @@
           <b-button id="contact-button" variant="dark" class="btn-lg" href="#">Feel free to reach out.</b-button>
         </div>
       </div>
+      <div class="col-2"></div>
     </b-row>
 
     <b-row >
@@ -70,9 +76,6 @@ export default {
   },
   data() {
         return {
-            images: {
-                portrait: require('@/assets/me_sqr.jpg')
-            }
         }
     },
   mounted() {
@@ -106,15 +109,19 @@ export default {
           var currentScrollPos = window.pageYOffset;
 
           if (prevScrollpos == 0) {
-            jumbo.style.top = "-100em";
-            portrait.style.left = "-100em";
+            portrait.style.left = "140%";
+            portrait.style.top = '-100vh';
+            jumbo.style.top = "-100vh";
             jumbo.classList.remove("quick")
+            portrait.classList.remove("quick")
           }
 
           if (currentScrollPos == 0) {
             jumbo.classList.add("quick")
+            portrait.classList.add("quick")
             jumbo.style.top = "0";
-            portrait.style.left = "3.5em";
+            portrait.style.top = '0';
+            portrait.style.left = "20%";
           }
 
           /* if (prevScrollpos > currentScrollPos) {
@@ -142,16 +149,18 @@ export default {
 @import '../../scss/custom.scss';
 
 .quick {
-  //background-color:blue !important;
   transition: top 0.3s !important; /* Transition effect when sliding down (and up) */
+  //transition: left 0.3s !important;
 }
-
-
 
 #greeting {
 
   display:flex;
   padding-top:2em;
+
+  .col-2 {
+    background-color:black;
+  }
 
   #tplysource{
     display:none
@@ -197,27 +206,33 @@ export default {
     left: 0;
     right: 0;
     height: 100%;
-    width: 50%;
+    width: 100%;
     opacity: 0;
     transition: .5s ease;
     background-color: #008CBA;
   }
 
   #portrait-container {
-    width:60%;
     float:right;
     height:100%;
     display:flex;
     img {
       width:100%;
       position:relative;
-      left:3.5em;
+      left:20%;
       object-fit:cover;
       border-top-right-radius:0;
       border-bottom-right-radius:0;
       border-top-left-radius:3em;
       border-bottom-left-radius:3em;
     }
+  }
+
+  #portraitimg {
+    transition-property: left, top;
+    transition-duration: 0.15s, 0.3s;
+    transition-delay: 0s, 0.25s;
+    transition-timing-function: linear;
   }
 
   #portraitimg:hover .overlay{
@@ -227,12 +242,13 @@ export default {
   #jumbo {
     padding:3em !important;
     display:flex;
-    border-radius:3em;
+    border-radius:2em;
 
     top: 0; /* Stay on top */
     max-height:100%;
     margin-bottom:0px !important;
     transition: top 1s;
+    transition-delay:0.25s;
     h1 {
       font-family:'Playfair Display';
     }
