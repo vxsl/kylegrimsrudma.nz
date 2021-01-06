@@ -8,7 +8,8 @@
             <img id ="codeimg" src="@/assets/code.jpg" class="img-fluid">
             <div id="portrait-container">
               <div class="d-table text-left" id="portrait-overlay">
-                <p class="d-table-cell align-middle">Portrait by <a href="http://alexahawksworth.com/">Alexa Hawksworth.</a></p>
+                <p class="d-table-cell align-bottom">Portrait by <a href="http://alexahawksworth.com/">Alexa Hawksworth.</a></p>
+                <p class="d-table-cell"></p>
               </div>
               <img id ="portraitimg" src="@/assets/me_sqrx1000.jpg" class="img-fluid">
             </div>
@@ -30,7 +31,7 @@
           <h1 id="tplydestination" ref="tplydestination" class="display-4 text-light"></h1>
           <p class="lead text-light">My name is Kyle Grimsrud-Manz.</p>
           <p class="text-dark">I'm finishing my Bachelor of Computer Science<br>at Concordia University in Montreal<br></p>
-          <b-button id="contact-button" variant="dark" class="btn-lg" href="#">Feel free to reach out.</b-button>
+          <b-button id="contact-button" variant="dark" class="btn-lg" href="mailto:hi@kylegrimsrudma.nz">Feel free to reach out.</b-button>
         </div>
       </div>
       <div class="col-2"></div>
@@ -222,6 +223,7 @@ export default {
           border-bottom-left-radius:3em;
         }
         #portraitimg {
+          height:100%;
           left:25%;
           z-index:0;
         }
@@ -234,8 +236,12 @@ export default {
           z-index:1;
           padding:10%;
           p {
-            width:50%;
+            width:50% !important;
+            a {
+              font-weight:bold;
+            }
           }
+          transition:opacity 0.5s;
         }
         #portrait-overlay:hover {
           opacity:0.8;
