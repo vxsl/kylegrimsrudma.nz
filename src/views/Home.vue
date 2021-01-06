@@ -1,29 +1,25 @@
 <template>
   <b-container fluid class="bg-light">
     <b-row id="greeting">
-      <div class="col-6" id="portrait">
-        <div id="portraitinner">
+      <div class="col-6">
+        <div id="portrait-container">
           <img id ="portraitimg" ref="portrait" src="@/assets/me_sqr.jpg" class="img-fluid">
         </div>
         <!--<div class="overlay">Portrait by Alexa Hawksworth.</div>-->
       </div>
-      <div id="jumbo" ref="jumbo" class="col-6 jumbotron bg-info text-light" align="right">
-        <div class="container primary">
+      <div id="jumbo" ref="jumbo" class="col-6 jumbotron bg-primary text-light" align="right">
+        <div class="container">
           <div id="tplysource" ref="tplysource">
             <type data-type="type1">Hello workl,.</type>
             <wait>500ms</wait>
             <delete data-chars="7" data-ignore-whitespace="false"></delete>
             <wait>500ms</wait>
-            <type data-type="type2">World.</type>
-
-            <!--<delete data-chars="12" data-ignore-whitespace="false"></delete>
-            <type>Kyle's site.</type>-->
+            <type data-type="type2">World...!</type>
           </div>
-          <h1 id="tplydestination" ref="tplydestination" class="display-4 text-primary"></h1>
-          <p class="lead"></p>
-          <p class="lead">My name is Kyle Grimsrud-Manz</p>
-          <p class="text-muted">I'm polishing off a Bachelor of Computer Science at Concordia University in Montreal<br>(Minor in Philosophy).</p>
-          <b-button id="contact" variant="dark" class="btn-lg" href="#">Feel free to reach out.</b-button>
+          <h1 id="tplydestination" ref="tplydestination" class="display-4 text-light"></h1>
+          <p class="lead text-light">My name is Kyle Grimsrud-Manz.</p>
+          <p class="text-dark">I'm finishing my Bachelor of Computer Science<br>at Concordia University in Montreal<br></p>
+          <b-button id="contact-button" variant="dark" class="btn-lg" href="#">Feel free to reach out.</b-button>
         </div>
       </div>
     </b-row>
@@ -207,33 +203,21 @@ export default {
     background-color: #008CBA;
   }
 
-  #portrait {
-    /* float:right;
-    position:relative;
-    display:flex; */
-    /* background-image:url(../assets/me_sqr.jpg);
-    background-size:cover;
-    opacity:0 */
-    background: theme-color("primary");
-    padding:0 !important;
-  }
-
-  #portraitinner {
+  #portrait-container {
     width:60%;
     float:right;
     height:100%;
     display:flex;
-  }
-
-  #portraitinner > img {
-    width:100%;
-    position:relative;
-    left:3.5em;
-    object-fit:cover;
-    border-top-right-radius:0;
-    border-bottom-right-radius:0;
-    border-top-left-radius:3em;
-    border-bottom-left-radius:3em;
+    img {
+      width:100%;
+      position:relative;
+      left:3.5em;
+      object-fit:cover;
+      border-top-right-radius:0;
+      border-bottom-right-radius:0;
+      border-top-left-radius:3em;
+      border-bottom-left-radius:3em;
+    }
   }
 
   #portraitimg:hover .overlay{
@@ -243,10 +227,7 @@ export default {
   #jumbo {
     padding:3em !important;
     display:flex;
-    border-top-left-radius:3em;
-    border-top-right-radius:0;
-    border-bottom-left-radius:0;
-    border-bottom-right-radius:0;
+    border-radius:3em;
 
     top: 0; /* Stay on top */
     max-height:100%;
@@ -255,11 +236,18 @@ export default {
     h1 {
       font-family:'Playfair Display';
     }
+    .lead {
+      font-size:1.7em;
+    }
+    .text-dark {
+      font-size:1.1em;
+      font-weight:400;
+    }
     font-weight:100;
   }
 }
 
-#contact {
+#contact-button {
   font-weight:300;
   font-style:italic;
   letter-spacing:-0.03em;
