@@ -6,9 +6,13 @@
         <div id="images" ref="images">
           <div id="img-container">
             <img id ="codeimg" src="@/assets/code.jpg" class="img-fluid">
-            <img id ="portraitimg" src="@/assets/me_sqrx1000.jpg" class="img-fluid">
+            <div id="portrait-container">
+              <div class="d-table text-left" id="portrait-overlay">
+                <p class="d-table-cell align-middle">Portrait by <a href="http://alexahawksworth.com/">Alexa Hawksworth.</a></p>
+              </div>
+              <img id ="portraitimg" src="@/assets/me_sqrx1000.jpg" class="img-fluid">
+            </div>
           </div>
-            <!--<div class="overlay">Portrait by Alexa Hawksworth.</div>-->
         </div>
       </div>
       <div id="jumbo" ref="jumbo" class="col-5 jumbotron bg-primary text-light" align="right">
@@ -195,7 +199,7 @@ export default {
       float:right;
       height:100%;
       display:flex;
-      img {
+      #codeimg {
         width:100%;
         position:relative;
         object-fit:cover;
@@ -204,13 +208,44 @@ export default {
         border-top-left-radius:3em;
         border-bottom-left-radius:3em;
       }
-      #portraitimg {
-        left:-80%;    
+      #portrait-container {
+        display:flex;
+        float:right;
+        height:100%;
+        #portraitimg, #portrait-overlay {
+          width:100%;
+          position:absolute;
+          object-fit:cover;
+          border-top-right-radius:0;
+          border-bottom-right-radius:0;
+          border-top-left-radius:3em;
+          border-bottom-left-radius:3em;
+        }
+        #portraitimg {
+          left:25%;
+          z-index:0;
+        }
+        #portrait-overlay {
+          opacity:0;
+          left:25%;
+          background-color:theme-color("info");
+          color:theme-color("primary");
+          height:100%;
+          z-index:1;
+          padding:10%;
+          p {
+            width:50%;
+          }
+        }
+        #portrait-overlay:hover {
+          opacity:0.8;
+        }
       }
     }
   }
 
   #jumbo {
+    z-index:2;
     padding:3em !important;
     display:flex;
     border-radius:2em;
