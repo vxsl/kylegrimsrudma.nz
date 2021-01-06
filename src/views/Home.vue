@@ -19,14 +19,14 @@
       <div id="jumbo" ref="jumbo" class="col-5 jumbotron bg-primary text-light" align="right">
         <div class="container">
           <div id="tplysource" ref="tplysource">
-            <type data-type="type1">Hello workl,.</type>
-            <wait>500ms</wait>
-            <delete data-chars="7" data-ignore-whitespace="false"></delete>
-            <wait>500ms</wait>
-            <type data-type="type1">wrok.</type>
-            <delete data-chars="10" data-ignore-whitespace="false"></delete>
-            <wait>50ms</wait>
-            <type data-type="type1">Hello world.</type>
+            <type v-pre data-type="type1">Hello workl,.</type>
+            <wait v-pre>500ms</wait>
+            <delete v-pre data-chars="7" data-ignore-whitespace="false"></delete>
+            <wait v-pre>500ms</wait>
+            <type v-pre data-type="type1">wrok.</type>
+            <delete v-pre data-chars="10" data-ignore-whitespace="false"></delete>
+            <wait v-pre>50ms</wait>
+            <type v-pre data-type="type1">Hello world.</type>
           </div>
           <h1 id="tplydestination" ref="tplydestination" class="display-4 text-light"></h1>
           <p class="lead text-light">My name is Kyle Grimsrud-Manz.</p>
@@ -41,13 +41,17 @@
       <b-container fluid id="blurb">
         <b-col align-self="center">
           <div class="alert align-middle alert-primary" role="alert">
-            A simple primary alert—check it out!
+            You might like to take a look at the <a href="https://kylegrimsrudma.nz/markt">markt</a> webapp, or the <a href="https://github.com/vxsl/recoverability">recoverability</a> desktop application.<br>Otherwise, below is a summary of my personal work.
           </div>
         </b-col>
       </b-container>
     </b-row>
 
-    <b-row>
+    <b-row id="calendar-container">
+      <div class="calendar justify-content-center"></div>
+    </b-row>
+
+    <!--<b-row>
       <b-col>
         <b-card
           title="bnnbloomberg-markets-scraper"
@@ -65,7 +69,7 @@
           <b-button href="#" variant="primary">Go somewhere</b-button>
         </b-card>
       </b-col>
-    </b-row>
+    </b-row>-->
   </b-container>
 </template>
 
@@ -73,8 +77,8 @@
 </script>
 
 <script>
-
 require('@/assets/scripts/tply.js')
+const GitHubCalendar = require('github-calendar')
 // @ is an alias to /src
 
 export default {
@@ -108,6 +112,9 @@ export default {
               }
             ]
         });
+
+        GitHubCalendar(".calendar", "vxsl", {responsive: true});
+
         var prevScrollpos = window.pageYOffset;
         var jumbo = this.$refs.jumbo;
         var images = this.$refs.images;
@@ -139,12 +146,21 @@ export default {
 
 <style lang="scss">
 @import '../../scss/custom.scss';
+@import '../../scss/GitHubCalendar-custom.scss';
+
+//@import url('https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css');
+
+
+.calendar {
+  width:100%;
+  padding-left:5%;
+  padding-right:5%;
+}
 
 .quick {
   transition: top 0.3s !important; /* Transition effect when sliding down (and up) */
   //transition: left 0.3s !important;
 }
-
 #greeting {
 
   display:flex;
@@ -282,9 +298,8 @@ export default {
 
 
 #blurb {
+  font-size:1.2em;
+  margin:2em;
   padding:1em;
-  .alert {
-    margin-bottom:0 !important;
-  }
 }
 </style>
