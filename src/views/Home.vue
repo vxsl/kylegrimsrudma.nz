@@ -125,27 +125,12 @@ export default {
             images.style.top = '0';
             images.style.left = "0";
           }
-
-          /* if (prevScrollpos > currentScrollPos) {
-            jumbo.style.top = "0px";
-            portrait.style.top = "0px";
-            jumbo.classList.toggle("quick")
-
-          } else {
-            jumbo.style.top = "-100em";
-            portrait.style.top = "-100em";
-            jumbo.classList.toggle("quick")
-
-          } */
           prevScrollpos = currentScrollPos;
-          
         })
       })
     },
 }
 </script>
-
-
 
 <style lang="scss">
 @import '../../scss/custom.scss';
@@ -182,16 +167,12 @@ export default {
   }
 
   .cursor {
-    //padding-left:1em;
-    //width:1px !important;
     animation: blink 0.8s steps(1) infinite;
-    //color: theme-color("primary") !important;
     display: inline-block;
     width: 0.05em;
     height: 1.1em;
     position:relative;
     top:.1em;    
-    //background-color: red;
     background-color: blue;
     border-radius:0.3em;
     margin-left: 0.2em;
@@ -209,40 +190,24 @@ export default {
     transition-duration: 0.4s, 0.3s;
     transition-delay: 0s, 0.4s;
     transition-timing-function: linear;
-  }
 
-  #img-container {
-
-    float:right;
-    height:100%;
-    display:flex;
-    img {
-      width:100%;
-      position:relative;
-      object-fit:cover;
-      border-top-right-radius:0;
-      border-bottom-right-radius:0;
-      border-top-left-radius:3em;
-      border-bottom-left-radius:3em;
+    #img-container {
+      float:right;
+      height:100%;
+      display:flex;
+      img {
+        width:100%;
+        position:relative;
+        object-fit:cover;
+        border-top-right-radius:0;
+        border-bottom-right-radius:0;
+        border-top-left-radius:3em;
+        border-bottom-left-radius:3em;
+      }
+      #portraitimg {
+        left:-80%;    
+      }
     }
-  }
-
-  .overlay {
-    position:relative;
-    width:100%;
-    left:-80%;    
-    opacity: 0.4;
-    z-index:1;
-    transition: .5s ease;
-    background-color: #008CBA;
-  }
-
-  #portraitimg {
-    left:-80%;    
-  }
-
-  #portraitimg:hover .overlay{
-    opacity:1
   }
 
   #jumbo {
@@ -266,13 +231,14 @@ export default {
     }
     font-weight:100;
   }
+  
+  #contact-button {
+    font-weight:300;
+    font-style:italic;
+    letter-spacing:-0.03em;
+  }
 }
 
-#contact-button {
-  font-weight:300;
-  font-style:italic;
-  letter-spacing:-0.03em;
-}
 
 #blurb {
   padding:1em;
