@@ -3,11 +3,13 @@
     <b-row id="greeting" class="d-flex">
       <div class="col-2"></div>
       <div class="col-3">
-        <div id="img-container">
-          <img id ="codeimg" ref="code" src="@/assets/code.jpg" class="img-fluid">
-          <img id ="portraitimg" ref="portrait" src="@/assets/me_sqrx1000.jpg" class="img-fluid">
+        <div id="images" ref="images">
+          <div id="img-container">
+            <img id ="codeimg" src="@/assets/code.jpg" class="img-fluid">
+            <img id ="portraitimg" src="@/assets/me_sqrx1000.jpg" class="img-fluid">
+          </div>
+            <!--<div class="overlay">Portrait by Alexa Hawksworth.</div>-->
         </div>
-        <!--<div class="overlay">Portrait by Alexa Hawksworth.</div>-->
       </div>
       <div id="jumbo" ref="jumbo" class="col-5 jumbotron bg-primary text-light" align="right">
         <div class="container">
@@ -103,25 +105,25 @@ export default {
         });
         var prevScrollpos = window.pageYOffset;
         var jumbo = this.$refs.jumbo;
-        var portrait = this.$refs.portrait;
+        var images = this.$refs.images;
         window.addEventListener("scroll", function(){
           //var jumboClasses = jumbo.classList;
           var currentScrollPos = window.pageYOffset;
 
           if (prevScrollpos == 0) {
-            portrait.style.left = "140%";
-            portrait.style.top = '-100vh';
+            images.style.left = "140%";
+            images.style.top = '-100vh';
             jumbo.style.top = "-100vh";
             jumbo.classList.remove("quick")
-            portrait.classList.remove("quick")
+            images.classList.remove("quick")
           }
 
           if (currentScrollPos == 0) {
             jumbo.classList.add("quick")
-            portrait.classList.add("quick")
+            images.classList.add("quick")
             jumbo.style.top = "0";
-            portrait.style.top = '0';
-            portrait.style.left = "20%";
+            images.style.top = '0';
+            images.style.left = "0";
           }
 
           /* if (prevScrollpos > currentScrollPos) {
@@ -195,25 +197,22 @@ export default {
     margin-left: 0.2em;
   }
 
-  .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #008CBA;
-  }
-
   .col-3 {
     padding:0;
     overflow:visible !important;
   }
 
+  #images {
+    position:relative;
+    height:100%;
+    transition-property: left, top;
+    transition-duration: 0.4s, 0.3s;
+    transition-delay: 0s, 0.4s;
+    transition-timing-function: linear;
+  }
+
   #img-container {
+
     float:right;
     height:100%;
     display:flex;
@@ -228,16 +227,21 @@ export default {
     }
   }
 
+  .overlay {
+    position:relative;
+    width:100%;
+    left:-80%;    
+    opacity: 0.4;
+    z-index:1;
+    transition: .5s ease;
+    background-color: #008CBA;
+  }
+
   #portraitimg {
-    left:-80%;
-    transition-property: left, top;
-    transition-duration: 0.15s, 0.3s;
-    transition-delay: 0s, 0.25s;
-    transition-timing-function: linear;
+    left:-80%;    
   }
 
   #portraitimg:hover .overlay{
-    overflow:visible !important;
     opacity:1
   }
 
@@ -249,7 +253,7 @@ export default {
     max-height:100%;
     margin-bottom:0px !important;
     transition: top 1s;
-    transition-delay:0.25s;
+    transition-delay:0.4s;
     h1 {
       font-family:'Playfair Display';
     }
