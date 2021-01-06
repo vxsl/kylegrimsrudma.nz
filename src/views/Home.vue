@@ -3,8 +3,8 @@
     <b-row id="greeting" class="d-flex">
       <div class="col-2"></div>
       <div class="col-3">
-        <div id="portrait-container">
-          <!--<img id ="codeimg" ref="code" src="@/assets/code.jpg" class="img-fluid">-->
+        <div id="img-container">
+          <img id ="codeimg" ref="code" src="@/assets/code.jpg" class="img-fluid">
           <img id ="portraitimg" ref="portrait" src="@/assets/me_sqrx1000.jpg" class="img-fluid">
         </div>
         <!--<div class="overlay">Portrait by Alexa Hawksworth.</div>-->
@@ -158,10 +158,6 @@ export default {
   display:flex;
   padding-top:2em;
 
-  .col-2 {
-    background-color:black;
-  }
-
   #tplysource{
     display:none
   }
@@ -212,14 +208,18 @@ export default {
     background-color: #008CBA;
   }
 
-  #portrait-container {
+  .col-3 {
+    padding:0;
+    overflow:visible !important;
+  }
+
+  #img-container {
     float:right;
     height:100%;
     display:flex;
     img {
       width:100%;
       position:relative;
-      left:20%;
       object-fit:cover;
       border-top-right-radius:0;
       border-bottom-right-radius:0;
@@ -229,6 +229,7 @@ export default {
   }
 
   #portraitimg {
+    left:-80%;
     transition-property: left, top;
     transition-duration: 0.15s, 0.3s;
     transition-delay: 0s, 0.25s;
@@ -236,6 +237,7 @@ export default {
   }
 
   #portraitimg:hover .overlay{
+    overflow:visible !important;
     opacity:1
   }
 
@@ -243,7 +245,6 @@ export default {
     padding:3em !important;
     display:flex;
     border-radius:2em;
-
     top: 0; /* Stay on top */
     max-height:100%;
     margin-bottom:0px !important;
