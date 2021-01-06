@@ -1,11 +1,15 @@
 <template>
   <div id="app">
     <div id="nav">
-      <b-navbar  fixed="top" type="light" variant="light">
-        <b-navbar-nav>
+      <b-navbar fixed="top" type="light" variant="light">
+        <b-navbar-nav id="left-items">
           <b-nav-item href="/resume">Resumé</b-nav-item>
           <b-nav-item href="https://github.com/vxsl">Github</b-nav-item>
           <b-nav-item href="#">LinkedIn</b-nav-item>
+        </b-navbar-nav>
+
+        <b-navbar-nav class="ml-auto" id="right-items">
+          <b-nav-item href="mailto:hi@kylegrimsrudma.nz" right>hi@kylegrimsrudma.nz</b-nav-item>
         </b-navbar-nav>
       </b-navbar>
     </div>
@@ -29,9 +33,17 @@
   text-align: center;
 }
 
-#nav {
-  padding: 30px;
+#left-items {
+  padding-left:16%;
+}
 
+#right-items {
+  padding-right:16%;
+  font-weight:bold;
+}
+
+#nav {
+  margin-bottom:3em !important;
   a {
     //font-weight: bold;
     //color: #2c3e50;
