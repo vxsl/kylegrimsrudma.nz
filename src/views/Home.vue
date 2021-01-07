@@ -39,28 +39,24 @@
         <div class="col-2"></div>
       </b-row>
     </div>
-    <div class="section">Some section</div>
-    <div class="section">Some section</div>
-    <div class="section">Some section</div>
+    <div class="section bg-primary">
+      <b-row class="d-flex justify-content-center">
+        <b-container fluid id="blurb">
+          <b-col>
+            <div class="alert align-middle alert-primary bg-light" role="alert">
+              Thanks for visiting my website! 👨‍💻<br><br>Take a look at the <a href="https://kylegrimsrudma.nz/markt">markt</a> webapp or the <a href="https://github.com/vxsl/recoverability">recoverability</a> desktop application.
+            </div>
+            <p>Otherwise, you can scroll down for a summary of my personal work.</p>
+          </b-col>
+        </b-container>
+      </b-row>
+    </div>
+    <div class="section">
+      <b-row id="calendar-container">
+        <div class="calendar justify-content-center"></div>
+      </b-row>
+    </div>
   </div>
-
-  <!--<b-container fluid class="bg-light">
-    
-
-    <b-row >
-      <b-container fluid id="blurb">
-        <b-col align-self="center">
-          <div class="alert align-middle alert-primary" role="alert">
-            You might like to take a look at the <a href="https://kylegrimsrudma.nz/markt">markt</a> webapp, or the <a href="https://github.com/vxsl/recoverability">recoverability</a> desktop application.<br>Otherwise, below is a summary of my personal work.
-          </div>
-        </b-col>
-      </b-container>
-    </b-row>
-
-    <b-row id="calendar-container">
-      <div class="calendar justify-content-center"></div>
-    </b-row>
-  </b-container>-->
 </template>
 
 <script src='@/assets/scripts/tply.js'>
@@ -161,9 +157,6 @@ export default {
 @import '../../scss/fullpage-custom.css';
 @import '../../scss/GitHubCalendar-custom.scss';
 
-//@import url('https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css');
-
-
 .calendar {
   width:100%;
   padding-left:5%;
@@ -177,9 +170,13 @@ export default {
 #greeting {
 
   display:flex;
-  transition: height 1s;
-  transition-delay: 1s;
+  transition: height 0.3s;
+  //transition-delay: 1s;
   transition-timing-function: linear;
+
+  * {
+    user-select:none;
+  }
 
   #tplysource{
     display:none
@@ -271,7 +268,7 @@ export default {
           p {
             width:50% !important;
             a {
-              font-weight:bold;
+              font-weight:700;
             }
           }
           transition:opacity 0.5s;
@@ -315,8 +312,19 @@ export default {
 
 
 #blurb {
-  font-size:1.2em;
   margin:2em;
-  padding:1em;
+  max-width:50%;
+  .alert {
+    padding:1em;
+    border-radius:1.2em;
+    font-size:1.5em;
+    a {
+      color:theme-color('primary');
+      font-weight:700;
+    }
+  }
+  p {
+    font-size:1.2em;
+  }
 }
 </style>
