@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-light" >
+  <div id="app" class="bg-light">
       <div id="nav-container" class="bg-light" fixed="top">
         <b-navbar id="nav">
           <b-navbar-nav id="left-items">
@@ -18,12 +18,9 @@
 </template>
 
 <style lang="scss">
-  @import '../scss/custom.scss';
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;1,600&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;700&display=swap');
-</style>
-
-<style lang="scss">
+@import '../scss/custom.scss';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;700&display=swap');
 
 #app {
   font-family: Inconsolata, Courier, monospace;
@@ -45,9 +42,22 @@
   padding-bottom:1.2em;
   #nav {
     border:solid;
-    border-color:theme-color("dark");
+    border-color:theme-color("secondary");
     border-radius:1em;
     border-width:1px;
   }
+}
+
+.navbar-expand * {
+  color:theme-color("secondary") !important;
+}
+
+a {
+  transition:color 1s;
+}
+
+a:hover {
+  color:theme-color("primary") !important;
+  font-weight:700;
 }
 </style>
