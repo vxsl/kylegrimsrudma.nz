@@ -32,7 +32,7 @@
             </div>
             <h1 id="tplydestination" ref="tplydestination" class="display-4 text-light"></h1>
             <p id="primary-sub" class="text-light">My name is Kyle Grimsrud-Manz.</p>
-            <p id="secondary-sub" class="text-light">I'm in the final year of my Bachelor of Computer Science at Concordia University in Montreal.<br></p>
+            <p id="secondary-sub" class="text-light">I'm in my final year of a <span id="bold">Bachelor of Computer Science</span> at Concordia University in Montreal, and I love programming.<br></p>
             <b-button id="contact-button" variant="dark" class="btn-lg" href="mailto:hi@kylegrimsrudma.nz">Feel free to reach out.</b-button>
           </div>
         </div>
@@ -254,6 +254,10 @@ export default {
   .col-3 {
     padding:0;
     overflow:visible !important;
+  }
+
+  #bold {
+    font-weight:500;
   }
 
   #images {

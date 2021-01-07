@@ -20,7 +20,7 @@
 <style lang="scss">
 @import '../scss/custom.scss';
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;1,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;700&display=swap');
 
 #app {
   font-family: Inconsolata, Courier, monospace;
