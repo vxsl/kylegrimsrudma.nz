@@ -1,41 +1,51 @@
 <template>
-  <b-container fluid class="bg-light">
-    <b-row id="greeting" class="d-flex">
-      <div class="col-2"></div>
-      <div class="col-3">
-        <div id="images" ref="images">
-          <div id="img-container">
-            <img id ="codeimg" src="@/assets/code.jpg" class="img-fluid">
-            <div id="portrait-container">
-              <div class="d-table text-left" id="portrait-overlay">
-                <p class="d-table-cell align-bottom">Portrait by <a href="http://alexahawksworth.com/">Alexa Hawksworth.</a></p>
-                <p class="d-table-cell"></p>
+
+  <div id="fullpage">
+    <div class="section">
+      <b-row id="greeting" ref="greeting" class="d-flex">
+        <div class="col-2"></div>
+        <div class="col-3">
+          <div id="images" ref="images">
+            <div id="img-container">
+              <img id ="codeimg" src="@/assets/code.jpg" class="img-fluid">
+              <div id="portrait-container">
+                <div class="d-table text-left" id="portrait-overlay">
+                  <p class="d-table-cell align-bottom">Portrait by <a href="http://alexahawksworth.com/">Alexa Hawksworth.</a></p>
+                  <p class="d-table-cell"></p>
+                </div>
+                <img id ="portraitimg" src="@/assets/me_sqrx1000.jpg" class="img-fluid">
               </div>
-              <img id ="portraitimg" src="@/assets/me_sqrx1000.jpg" class="img-fluid">
             </div>
           </div>
         </div>
-      </div>
-      <div id="jumbo" ref="jumbo" class="col-5 jumbotron bg-primary text-light" align="right">
-        <div class="container">
-          <div id="tplysource" ref="tplysource">
-            <type v-pre data-type="type1">Hello workl,.</type>
-            <wait v-pre>500ms</wait>
-            <delete v-pre data-chars="7" data-ignore-whitespace="false"></delete>
-            <wait v-pre>500ms</wait>
-            <type v-pre data-type="type1">wrok.</type>
-            <delete v-pre data-chars="10" data-ignore-whitespace="false"></delete>
-            <wait v-pre>50ms</wait>
-            <type v-pre data-type="type1">Hello world.</type>
+        <div id="jumbo" ref="jumbo" class="col-5 jumbotron bg-primary text-light" align="right">
+          <div class="container">
+            <div id="tplysource" ref="tplysource">
+              <type v-pre data-type="type1">Hello workl,.</type>
+              <wait v-pre>500ms</wait>
+              <delete v-pre data-chars="7" data-ignore-whitespace="false"></delete>
+              <wait v-pre>500ms</wait>
+              <type v-pre data-type="type1">wrok.</type>
+              <delete v-pre data-chars="10" data-ignore-whitespace="false"></delete>
+              <wait v-pre>50ms</wait>
+              <type v-pre data-type="type1">Hello world.</type>
+            </div>
+            <h1 id="tplydestination" ref="tplydestination" class="display-4 text-light"></h1>
+            <p class="lead text-light">My name is Kyle Grimsrud-Manz.</p>
+            <p class="text-dark">I'm finishing my Bachelor of Computer Science<br>at Concordia University in Montreal<br></p>
+            <b-button id="contact-button" variant="dark" class="btn-lg" href="mailto:hi@kylegrimsrudma.nz">Feel free to reach out.</b-button>
           </div>
-          <h1 id="tplydestination" ref="tplydestination" class="display-4 text-light"></h1>
-          <p class="lead text-light">My name is Kyle Grimsrud-Manz.</p>
-          <p class="text-dark">I'm finishing my Bachelor of Computer Science<br>at Concordia University in Montreal<br></p>
-          <b-button id="contact-button" variant="dark" class="btn-lg" href="mailto:hi@kylegrimsrudma.nz">Feel free to reach out.</b-button>
         </div>
-      </div>
-      <div class="col-2"></div>
-    </b-row>
+        <div class="col-2"></div>
+      </b-row>
+    </div>
+    <div class="section">Some section</div>
+    <div class="section">Some section</div>
+    <div class="section">Some section</div>
+  </div>
+
+  <!--<b-container fluid class="bg-light">
+    
 
     <b-row >
       <b-container fluid id="blurb">
@@ -50,27 +60,7 @@
     <b-row id="calendar-container">
       <div class="calendar justify-content-center"></div>
     </b-row>
-
-    <!--<b-row>
-      <b-col>
-        <b-card
-          title="bnnbloomberg-markets-scraper"
-          img-src="https://picsum.photos/600/300/?image=25"
-          img-alt="Image"
-          img-top
-          tag="article"
-          style="max-width: 20rem;"
-          class="mb-2"
-        >
-          <b-card-text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.
-          </b-card-text>
-
-          <b-button href="#" variant="primary">Go somewhere</b-button>
-        </b-card>
-      </b-col>
-    </b-row>-->
-  </b-container>
+  </b-container>-->
 </template>
 
 <script src='@/assets/scripts/tply.js'>
@@ -78,6 +68,7 @@
 
 <script>
 require('@/assets/scripts/tply.js')
+const fullpage = require('fullpage.js')
 const GitHubCalendar = require('github-calendar')
 // @ is an alias to /src
 
@@ -90,7 +81,13 @@ export default {
         }
     },
   mounted() {
+      var fullPageInstance = new fullpage('#fullpage', {
+        navigation: true,
+        //sectionsColor:['#ff5f45', '#0798ec', '#fc6c7c', 'grey']
+      });
       this.$nextTick(function(){
+
+
         tply.animate(
           this.$refs.tplysource,
           this.$refs.tplydestination,
@@ -118,24 +115,39 @@ export default {
         var prevScrollpos = window.pageYOffset;
         var jumbo = this.$refs.jumbo;
         var images = this.$refs.images;
+        var row = this.$refs.greeting;
+        var hidden = false;
+        var unhideFlag = false;
+
         window.addEventListener("scroll", function(){
+          console.log("scroll")
           //var jumboClasses = jumbo.classList;
           var currentScrollPos = window.pageYOffset;
-
-          if (prevScrollpos == 0) {
+          console.log(window.scrollY)
+          //console.log(hidden)
+          if (prevScrollpos == 0 && !hidden) {
+            hidden = true
+            console.log("here")
             images.style.left = "140%";
             images.style.top = '-100vh';
             jumbo.style.top = "-100vh";
             jumbo.classList.remove("quick")
             images.classList.remove("quick")
+            row.style.height = "0";
+            setTimeout(() => {
+              unhideFlag = true;
+            }, 1000);
           }
 
-          if (currentScrollPos == 0) {
+          if (currentScrollPos == 0 && hidden && unhideFlag) {
+            hidden = false
+            row.style.height = "auto";
             jumbo.classList.add("quick")
             images.classList.add("quick")
             jumbo.style.top = "0";
             images.style.top = '0';
             images.style.left = "0";
+            
           }
           prevScrollpos = currentScrollPos;
         })
@@ -146,6 +158,7 @@ export default {
 
 <style lang="scss">
 @import '../../scss/custom.scss';
+@import '../../scss/fullpage-custom.css';
 @import '../../scss/GitHubCalendar-custom.scss';
 
 //@import url('https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css');
@@ -164,7 +177,9 @@ export default {
 #greeting {
 
   display:flex;
-  padding-top:2em;
+  transition: height 1s;
+  transition-delay: 1s;
+  transition-timing-function: linear;
 
   #tplysource{
     display:none
@@ -175,6 +190,8 @@ export default {
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
+    //white-space: nowrap;
+    height:4em;
   }
 
   @keyframes blink {

@@ -38,12 +38,13 @@
 }
 
 #right-items {
+  float:right;
+  text-align:right;
   padding-right:16%;
   font-weight:bold;
 }
 
 #nav {
-  margin-bottom:3em !important;
   a {
     //font-weight: bold;
     //color: #2c3e50;
