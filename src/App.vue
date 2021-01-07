@@ -1,18 +1,18 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <b-navbar fixed="top" type="light" variant="light">
-        <b-navbar-nav id="left-items">
-          <b-nav-item href="/resume">Resumé</b-nav-item>
-          <b-nav-item href="https://github.com/vxsl">Github</b-nav-item>
-          <b-nav-item href="#">LinkedIn</b-nav-item>
-        </b-navbar-nav>
+  <div id="app" class="bg-light" >
+      <div id="nav-container" class="bg-light" fixed="top">
+        <b-navbar id="nav">
+          <b-navbar-nav id="left-items">
+            <b-nav-item id="test" href="/resume">Resumé</b-nav-item>
+            <b-nav-item href="https://github.com/vxsl">Github</b-nav-item>
+            <b-nav-item href="#">LinkedIn</b-nav-item>
+          </b-navbar-nav>
 
-        <b-navbar-nav class="ml-auto" id="right-items">
-          <b-nav-item href="mailto:hi@kylegrimsrudma.nz" right>hi@kylegrimsrudma.nz</b-nav-item>
-        </b-navbar-nav>
-      </b-navbar>
-    </div>
+          <b-navbar-nav class="ml-auto" id="right-items">
+            <b-nav-item href="mailto:hi@kylegrimsrudma.nz" right>hi@kylegrimsrudma.nz</b-nav-item>
+          </b-navbar-nav>
+        </b-navbar>
+      </div>
     <router-view/>
   </div>
 </template>
@@ -28,30 +28,26 @@
 #app {
   font-family: Inconsolata, Courier, monospace;
   letter-spacing:0.001em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
-
-#left-items {
-  padding-left:16%;
-}
-
 #right-items {
   float:right;
   text-align:right;
-  padding-right:16%;
   font-weight:700;
 }
-
-#nav {
-  a {
-    //font-weight: bold;
-    //color: #2c3e50;
-
-    &.router-link-exact-active {
-      //color: #42b983;
-    }
+#nav-container {
+  position:absolute;
+  z-index:4;
+  width:100%;
+  padding-left:16% !important;
+  padding-right:16% !important;
+  padding-top:1.2em;
+  padding-bottom:1.2em;
+  #nav {
+    border:solid;
+    border-color:theme-color("dark");
+    border-radius:1em;
+    border-width:1px;
   }
 }
 </style>
