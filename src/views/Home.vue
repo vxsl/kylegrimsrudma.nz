@@ -39,7 +39,7 @@
         <div class="col-2"></div>
       </b-row>
     </div>
-    <div class="section bg-primary">
+    <div class="section">
       <b-row class="d-flex justify-content-center">
         <b-container fluid id="blurb">
           <b-col>
@@ -79,6 +79,7 @@ export default {
   mounted() {
       var fullPageInstance = new fullpage('#fullpage', {
         navigation: true,
+        paddingTop: '3em',
         //sectionsColor:['#ff5f45', '#0798ec', '#fc6c7c', 'grey']
       });
       this.$nextTick(function(){
@@ -114,6 +115,10 @@ export default {
         var row = this.$refs.greeting;
         var hidden = false;
         var unhideFlag = false;
+
+        window.scroll(() => {
+          console.log("HERE")
+        })
 
         window.addEventListener("scroll", function(){
           console.log("scroll")
@@ -163,6 +168,39 @@ export default {
   padding-right:5%;
 }
 
+#fp-nav ul li a span {
+  background:theme-color("primary") !important
+}
+
+.fp-viewing-1 {
+  #nav-container .navbar {
+    border-color:theme-color("light");
+  }
+  .nav-link {
+    color:theme-color("light") !important;
+  }
+  #app {
+    background:theme-color("primary") !important;
+  }
+  #fp-nav ul li a span {
+    background:theme-color("light") !important
+  }
+} 
+
+.fp-viewing-2 {
+  #nav-container .navbar {
+    border-color:theme-color("light");
+  }
+  .nav-link {
+    color:theme-color("light") !important;
+  }
+  #app {
+    background:theme-color("dark") !important;
+  }
+  #fp-nav ul li a span {
+    background:theme-color("light") !important
+  }
+} 
 .quick {
   transition: top 0.3s !important; /* Transition effect when sliding down (and up) */
   //transition: left 0.3s !important;

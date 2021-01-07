@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="bg-light">
-      <div id="nav-container" class="bg-light" fixed="top">
+      <div id="nav-container" fixed="top">
         <b-navbar id="nav">
           <b-navbar-nav id="left-items">
             <b-nav-item id="test" href="/resume">Resumé</b-nav-item>
@@ -26,6 +26,7 @@
   font-family: Inconsolata, Courier, monospace;
   letter-spacing:0.001em;
   text-align: center;
+  transition: background 1s;
 }
 #right-items {
   float:right;
@@ -40,24 +41,19 @@
   padding-right:16% !important;
   padding-top:1.2em;
   padding-bottom:1.2em;
-  #nav {
+  .navbar {
     border:solid;
-    border-color:theme-color("secondary");
+    border-color:theme-color("primary");
     border-radius:1em;
     border-width:1px;
   }
 }
 
-.navbar-expand * {
-  color:theme-color("secondary") !important;
-}
-
-a {
-  transition:color 1s;
+.nav-link {
+  color:theme-color("primary") !important;
 }
 
 a:hover {
-  color:theme-color("primary") !important;
   font-weight:700;
 }
 </style>
