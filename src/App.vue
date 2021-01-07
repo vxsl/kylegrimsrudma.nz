@@ -20,7 +20,7 @@
 <style lang="scss">
   @import '../scss/custom.scss';
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;1,600&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;700&display=swap');
 </style>
 
 <style lang="scss">
@@ -41,7 +41,7 @@
   float:right;
   text-align:right;
   padding-right:16%;
-  font-weight:bold;
+  font-weight:700;
 }
 
 #nav {
