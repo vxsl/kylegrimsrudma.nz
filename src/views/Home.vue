@@ -31,8 +31,8 @@
               <type v-pre data-type="type1">Hello world.</type>
             </div>
             <h1 id="tplydestination" ref="tplydestination" class="display-4 text-light"></h1>
-            <p class="lead text-light">My name is Kyle Grimsrud-Manz.</p>
-            <p class="text-dark">I'm finishing my Bachelor of Computer Science<br>at Concordia University in Montreal<br></p>
+            <p id="primary-sub" class="text-light">My name is Kyle Grimsrud-Manz.</p>
+            <p id="secondary-sub" class="text-light">I'm in the final year of my Bachelor of Computer Science at Concordia University in Montreal.<br></p>
             <b-button id="contact-button" variant="dark" class="btn-lg" href="mailto:hi@kylegrimsrudma.nz">Feel free to reach out.</b-button>
           </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="alert align-middle alert-primary bg-light" role="alert">
               Thanks for visiting my website! 👨‍💻<br><br>Take a look at the <a href="https://kylegrimsrudma.nz/markt">markt</a> webapp or the <a href="https://github.com/vxsl/recoverability">recoverability</a> desktop application.
             </div>
-            <p>Otherwise, you can scroll down for a summary of my personal work.</p>
+            <p class="text-light">Otherwise, you can scroll down for a summary of my personal work.</p>
           </b-col>
         </b-container>
       </b-row>
@@ -208,7 +208,7 @@ export default {
     height: 1.1em;
     position:relative;
     top:.1em;    
-    background-color: blue;
+    background-color: theme-color("light");
     border-radius:0.3em;
     margin-left: 0.2em;
   }
@@ -260,7 +260,7 @@ export default {
         #portrait-overlay {
           opacity:0;
           left:25%;
-          background-color:theme-color("info");
+          background-color:theme-color("light");
           color:theme-color("primary");
           height:100%;
           z-index:1;
@@ -293,8 +293,14 @@ export default {
     h1 {
       font-family:'Playfair Display';
     }
-    .lead {
+    #primary-sub {
       font-size:1.7em;
+      font-weight:400;
+    }
+    #secondary-sub {
+      max-width:70%;
+      font-weight:300;
+      font-size:1.2em;
     }
     .text-dark {
       font-size:1.1em;
