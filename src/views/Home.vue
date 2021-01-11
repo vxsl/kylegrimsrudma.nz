@@ -44,7 +44,7 @@
         <b-container fluid id="blurb">
           <b-col>
             <div class="alert align-middle alert-primary bg-light" role="alert">
-              Thanks for visiting my website! 👨‍💻<br><br>Take a look at the <a href="https://kylegrimsrudma.nz/markt">markt</a> webapp or the <a href="https://github.com/vxsl/recoverability">recoverability</a> desktop application.
+              Thanks for visiting my website! 👨‍💻<br><br>Take a look at the <a href="https://markt.kylegrimsrudma.nz">markt</a> webapp or the <a href="https://github.com/vxsl/recoverability">recoverability</a> desktop application.
             </div>
             <p class="text-light">Otherwise, you can scroll down for a summary of my personal work.</p>
           </b-col>
