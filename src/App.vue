@@ -3,9 +3,8 @@
       <div id="nav-container" fixed="top">
         <b-navbar id="nav">
           <b-navbar-nav id="left-items">
-            <b-nav-item id="test" href="/resume">Resumé</b-nav-item>
             <b-nav-item href="https://github.com/vxsl">Github</b-nav-item>
-            <b-nav-item href="#">LinkedIn</b-nav-item>
+            <b-nav-item href="https://www.linkedin.com/in/kyle-grimsrud-manz-0b0624203/">LinkedIn</b-nav-item>
           </b-navbar-nav>
 
           <b-navbar-nav class="ml-auto" id="right-items">
