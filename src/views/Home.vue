@@ -51,10 +51,10 @@
         </b-container>
       </b-row>
     </div>
-    <div class="section">
-      <b-row id="calendar-container">
-        <div class="calendar justify-content-center"></div>
-      </b-row>
+    <div class="section summary-section">
+      <div class="d-flex justify-content-center">
+        <div class="calendar text-light"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -162,10 +162,25 @@ export default {
 @import '../../scss/fullpage-custom.css';
 @import '../../scss/GitHubCalendar-custom.scss';
 
-.calendar {
-  width:100%;
-  padding-left:5%;
-  padding-right:5%;
+.summary-section {
+  padding-left:20%;
+  padding-right:20%;
+  .calendar {
+    user-select: none;
+    width:100%;
+    padding:1em;
+    background:theme-color("less-dark");
+    border-radius:1em;
+    a {
+      color:theme-color("info");
+    }
+    span {
+      color:theme-color("light");
+      &.text-muted {
+        color:theme-color("light") !important;
+      }
+    }
+  }
 }
 
 #fp-nav ul li a span {
