@@ -1,17 +1,17 @@
 <template>
   <div id="app" class="bg-light">
-      <div id="nav-container" fixed="top">
-        <b-navbar id="nav">
-          <b-navbar-nav id="left-items">
-            <b-nav-item href="https://github.com/vxsl">Github</b-nav-item>
-            <b-nav-item href="https://www.linkedin.com/in/kyle-grimsrud-manz-0b0624203/">LinkedIn</b-nav-item>
-          </b-navbar-nav>
+    <div id="nav-container" :class="mobileClass" fixed="top">
+      <b-navbar id="nav">
+        <b-navbar-nav id="left-items">  
+          <b-nav-item href="https://github.com/vxsl">Github</b-nav-item>
+          <b-nav-item href="https://www.linkedin.com/in/kyle-grimsrud-manz-0b0624203/">LinkedIn</b-nav-item>
+        </b-navbar-nav>
 
-          <b-navbar-nav class="ml-auto" id="right-items">
-            <b-nav-item href="mailto:hi@kylegrimsrudma.nz" right>hi@kylegrimsrudma.nz</b-nav-item>
-          </b-navbar-nav>
-        </b-navbar>
-      </div>
+        <b-navbar-nav class="ml-auto" id="right-items">
+          <b-nav-item href="mailto:hi@kylegrimsrudma.nz" right>{{mobile? 'Contact' : 'hi@kylegrimsrudma.nz'}}</b-nav-item>
+        </b-navbar-nav>
+      </b-navbar>
+    </div>
     <router-view/>
   </div>
 </template>
@@ -68,6 +68,12 @@ export default {
     border-radius:1em;
     border-width:1px;
   }
+}
+
+#nav-container.mobile {
+  position:relative !important;
+  padding-left:1em !important;
+  padding-right:1em !important;
 }
 
 .nav-link {

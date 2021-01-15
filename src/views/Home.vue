@@ -5,7 +5,7 @@
       <b-row id="greeting" ref="greeting" class="d-flex">
         <div class="col-2"></div>
         <div class="col-3">
-          <div id="images" ref="images">
+          <div v-if="!mobile" id="images" ref="images">
             <div id="img-container">
               <img id ="codeimg" src="@/assets/code.jpg" class="img-fluid">
               <div id="portrait-container">
@@ -18,7 +18,7 @@
             </div>
           </div>
         </div>
-        <div id="jumbo" ref="jumbo" class="col-5 jumbotron bg-primary text-light" align="right">
+        <div id="jumbo" ref="jumbo" :class="mobile? 'mobile' : 'col-5'" class="jumbotron bg-primary text-light" align="right">
           <div class="container">
             <div id="tplysource" ref="tplysource">
               <type v-pre data-type="type1">Hello workl,.</type>
@@ -66,7 +66,6 @@
 require('@/assets/scripts/tply.js')
 const fullpage = require('fullpage.js')
 const GitHubCalendar = require('github-calendar')
-// @ is an alias to /src
 
 export default {
   name: 'Home',
@@ -346,6 +345,8 @@ export default {
   }
 
   #jumbo {
+    &.mobile {
+    }
     z-index:2;
     padding:3em !important;
     display:flex;
