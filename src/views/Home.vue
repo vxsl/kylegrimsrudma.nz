@@ -2,9 +2,9 @@
 
   <div id="fullpage">
     <div class="section">
-      <b-row id="greeting" ref="greeting" class="d-flex">
-        <div class="col-2"></div>
-        <div class="col-3">
+      <div :class="'inner-section ' + mobileClass">
+        <Nav :mobile="mobile" :mobileClass="mobileClass"/>
+        <div id="greeting" :class="mobileClass" ref="greeting">  
           <div v-if="!mobile" id="images" ref="images">
             <div id="img-container">
               <img id ="codeimg" src="@/assets/code.jpg" class="img-fluid">
@@ -64,12 +64,14 @@
 
 <script>
 require('@/assets/scripts/tply.js')
+import Nav from '@/components/Nav.vue'
 const fullpage = require('fullpage.js')
 const GitHubCalendar = require('github-calendar')
 
 export default {
   name: 'Home',
   components: {
+    Nav
   },
   data() {
         return {
@@ -168,6 +170,18 @@ export default {
 @import '../../scss/custom.scss';
 @import '../../scss/fullpage-custom.css';
 @import '../../scss/GitHubCalendar-custom.scss';
+
+}
+Nav {
+  margin-bottom:1em;
+}
+
+.inner-section {
+  display:inline-block;
+  &.mobile {
+    padding-top:1em;
+  }
+}
 
 .summary-section {
   padding-left:20%;
