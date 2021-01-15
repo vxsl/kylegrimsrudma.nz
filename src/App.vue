@@ -16,6 +16,28 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+    }
+  },
+  computed: {
+    mobile() {
+      return screen.width <= 760? true : false
+    },
+    mobileClass() {
+      if (this.mobile) {
+        return 'mobile'
+      }
+      else {
+        return ''
+      }
+    }
+  },
+}
+</script>
+
 <style lang="scss">
 @import '../scss/custom.scss';
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;1,600&display=swap');

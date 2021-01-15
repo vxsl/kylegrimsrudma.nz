@@ -76,6 +76,14 @@ export default {
         return {
         }
     },
+  computed: {
+    mobile() {
+      return screen.width <= 760? true : false
+    },
+    mobileClass() {
+      return this.mobile? 'mobile' : null
+    }
+  },
   mounted() {
       var fullPageInstance = new fullpage('#fullpage', {
         navigation: true,
