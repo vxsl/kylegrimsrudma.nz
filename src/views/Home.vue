@@ -42,21 +42,15 @@
         </div>
       </div>
     </div>
-    <div v-if="!mobile" class="section">
-      <b-row class="w-100 d-flex justify-content-center">
-        <b-container fluid id="blurb">
-          <b-col>
-            <div class="alert align-middle alert-primary bg-light" role="alert">
-              Thanks for visiting my website! 👨‍💻<br><br>Take a look at the <a href="https://markt.kylegrimsrudma.nz">markt</a> webapp or the <a href="https://github.com/vxsl/recoverability">recoverability</a> desktop application.
-            </div>
-            <p class="text-light">Otherwise, you can scroll down for a summary of my personal work.</p>
-          </b-col>
-        </b-container>
-      </b-row>
-    </div>
-    <div v-if="!mobile" class="section summary-section">
-      <div class="w-100 d-flex justify-content-center">
-        <div class="w-100 calendar text-light"></div>
+    <div v-if="!mobile" class="section second-section">
+      <div>
+        <div id="blurb" class="alert bg-light" role="alert">
+          <p>
+          Thanks for visiting my website! 👨‍💻<br><br>Take a look at the <a href="https://markt.kylegrimsrudma.nz">markt</a> webapp or the <a href="https://github.com/vxsl/recoverability">recoverability</a> desktop application.
+          </p>
+        </div>
+        <div class="calendar bg-dark text-light"></div>
+        <a class="label" href="https://github.com/Bloggify/github-calendar">Bloggify/github-calendar</a>
       </div>
     </div>
   </div>
@@ -168,8 +162,9 @@ export default {
 @import '../../scss/GitHubCalendar-custom.scss';
 
 .fp-tableCell {
-  display: flex;
-  align-items: center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   padding:15%;
 }
 Nav {
@@ -183,23 +178,48 @@ Nav {
   }
 }
 
+.second-section {
+  display:flex;
+  justify-content:center;
+  text-align:right;
+  a.label {
+    color:theme-color('light-grey');
+    text-align:right;
+    margin-right:1em;
+  }
+}
 
-.summary-section {  
-  padding-left:20%;
-  padding-right:20%;
-  .calendar {
-    user-select: none;
-    padding:1em;
-    background:theme-color("less-dark");
-    border-radius:1em;
-    a {
-      color:theme-color("info");
-    }
-    span {
-      color:theme-color("light");
-      &.text-muted {
-        color:theme-color("light") !important;
-      }
+
+#blurb {
+  text-align:left;
+  padding:2em;
+  padding:1em;
+  border-radius:1.2em;
+  font-size:1.5em;
+  a {
+    color:theme-color('primary');
+    font-weight:700;
+  }
+  p {
+    margin-bottom:0;
+  }
+}
+
+.calendar {
+  width:100%;
+  user-select: none;
+  padding:1em;
+  background:theme-color("less-dark");
+  border-radius:1em;
+  margin-bottom:0.5em;
+  a {
+    color:theme-color("info");
+  }
+  span {
+    color:theme-color("light");
+    &.text-muted {
+      font-size:1.2em;
+      color:theme-color("light") !important;
     }
   }
 }
@@ -223,7 +243,7 @@ Nav {
   }
 } 
 
-.fp-viewing-2 {
+/* .fp-viewing-2 {
   #nav-container .navbar {
     border-color:theme-color("light");
   }
@@ -236,7 +256,7 @@ Nav {
   #fp-nav ul li a span {
     background:theme-color("light") !important
   }
-} 
+}  */
 .quick {
   transition: top 0.3s !important; /* Transition effect when sliding down (and up) */
   //transition: left 0.3s !important;
@@ -433,21 +453,6 @@ Nav {
 }
 
 
-#blurb {
-  margin:2em;
-  max-width:50%;
-  .alert {
-    padding:1em;
-    border-radius:1.2em;
-    font-size:1.5em;
-    a {
-      color:theme-color('primary');
-      font-weight:700;
-    }
-  }
-  p {
-    font-size:1.2em;
-  }
-}
+
 
 </style>
