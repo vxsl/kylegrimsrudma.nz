@@ -55,8 +55,8 @@
       </b-row>
     </div>
     <div v-if="!mobile" class="section summary-section">
-      <div class="d-flex justify-content-center">
-        <div class="calendar text-light"></div>
+      <div class="w-100 d-flex justify-content-center">
+        <div class="w-100 calendar text-light"></div>
       </div>
     </div>
   </div>
@@ -189,7 +189,6 @@ Nav {
   padding-right:20%;
   .calendar {
     user-select: none;
-    width:100%;
     padding:1em;
     background:theme-color("less-dark");
     border-radius:1em;
