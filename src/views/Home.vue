@@ -4,7 +4,7 @@
       <div :class="'inner-section ' + mobileClass">
         <Nav :mobile="mobile" :mobileClass="mobileClass"/>
         <div id="greeting" :class="mobileClass" ref="greeting">  
-          <div v-if="!mobile" id="images" ref="images" class="initial">
+          <div v-if="!mobile" id="images" ref="images">
             <div id="img-container">
               <img id ="codeimg" src="@/assets/code.jpg" class="img-fluid">
               <div id="portrait-container">
@@ -84,14 +84,7 @@ export default {
   },
   mounted() {
     if (!this.mobile) {
-      const images = this.$refs.images
-      const greeting = this.$refs.greeting
       var fullPageInstance = new fullpage('#fullpage', {
-        onLeave() {
-          images.classList.remove('initial')
-          images.classList.add('leave-first-page')
-          greeting.classList.add('leave-first-page')
-        }
       });
       GitHubCalendar(".calendar", "vxsl", {responsive: true});
     }
@@ -164,14 +157,9 @@ export default {
 </script>
 <style lang="scss">
 @import '../../scss/custom.scss';
-@import '../../scss/animations.scss';
 //@import '../../scss/fullpage-custom.css';
 @import '../../node_modules/fullpage.js/dist/fullpage.min.css';
 @import '../../scss/GitHubCalendar-custom.scss';
-
-#fullpage {
-  transition-delay: 1s !important;
-}
 
 .fp-tableCell {
   display:flex;
@@ -270,19 +258,10 @@ Nav {
   }
 }  */
 .quick {
-  //transition: top 0.3s !important; /* Transition effect when sliding down (and up) */
+  transition: top 0.3s !important; /* Transition effect when sliding down (and up) */
   //transition: left 0.3s !important;
 }
 #greeting {
-
-  &.leave-first-page {
-    animation: slide-greeting-up 1s;
-    -webkit-animation: slide-greeting-up 1s;
-    -moz-animation: slide-greeting-up 1s;
-    animation-delay:0.5s;
-    -webkit-animation-delay:0.5s;
-    -moz-animation-delay:0.5s;
-  }
   height:100%;
   display:flex;
   &.mobile {
@@ -335,26 +314,14 @@ Nav {
   }
 
   #images {
-    &.initial {
-      animation: slide-images-in 1s;
-      -webkit-animation: slide-images-in 1s;
-      -moz-animation: slide-images-in 1s;
-      animation-fill-mode: forwards !important;
-      -webkit-animation-fill-mode: forwards !important;
-    }
-    &.leave-first-page {
-      animation: slide-images-into-jumbo 0.4s;
-      -webkit-animation: slide-images-into-jumbo 0.4s;
-      -moz-animation: slide-images-into-jumbo 0.4s;
-    }
     width:50%;
     position:relative;
     min-height:100%;
-    /* transition-property: left, top;
+    transition-property: left, top;
     transition-duration: 0.4s, 0.3s;
     transition-delay: 0s, 0.4s;
-    transition-timing-function: linear; */
-    transition: left, right 0.5s !important;
+    transition-timing-function: linear;
+
     #img-container {
 
       float:right;
