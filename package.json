@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "fullpage.js": "^3.0.9",
     "github-calendar": "^2.2.6",
+    "github-calendar-parser": "vxsl/github-calendar-parser#current-streak-fix",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"
   },
