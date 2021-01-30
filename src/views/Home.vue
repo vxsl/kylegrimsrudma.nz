@@ -85,6 +85,7 @@ export default {
   mounted() {
     if (!this.mobile) {
       var fullPageInstance = new fullpage('#fullpage', {
+        licenseKey: 'HR0lfDR^q6'
       });
       GitHubCalendar(".calendar", "vxsl", {responsive: true});
     }
