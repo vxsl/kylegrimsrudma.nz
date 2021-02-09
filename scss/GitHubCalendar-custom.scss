@@ -6,10 +6,14 @@
     --color-calendar-graph-day-L4-bg: #0a4208;
 }
 
+
 .calendar {
     min-height: 243px;
     text-align: center;
     margin: 0 auto;
+    font-family: Inconsolata, Courier, monospace;
+    letter-spacing:0.001em;
+    border:none;
 }
 
 .calendar-graph text.wday,

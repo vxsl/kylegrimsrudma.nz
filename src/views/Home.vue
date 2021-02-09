@@ -160,6 +160,7 @@ export default {
 @import '../../scss/custom.scss';
 //@import '../../scss/fullpage-custom.css';
 @import '../../node_modules/fullpage.js/dist/fullpage.min.css';
+@import '../../node_modules/github-calendar/dist/github-calendar-responsive.css';
 @import '../../scss/GitHubCalendar-custom.scss';
 
 .fp-tableCell {
@@ -223,6 +224,8 @@ Nav {
       color:theme-color("light") !important;
     }
   }
+
+  
 }
 
 #fp-nav ul li a span {
