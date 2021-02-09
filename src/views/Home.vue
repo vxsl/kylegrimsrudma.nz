@@ -87,7 +87,7 @@ export default {
       var fullPageInstance = new fullpage('#fullpage', {
         licenseKey: 'HR0lfDR^q6'
       });
-      GitHubCalendar(".calendar", "vxsl", {responsive: true});
+      GitHubCalendar(".calendar", "vxsl", {responsive: true, cache:0});
     }
     this.$nextTick(function(){
       tply.animate(
